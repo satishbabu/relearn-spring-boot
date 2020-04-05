@@ -20,4 +20,19 @@ class UserDaoService {
     List<User> findAll() {
         return users;
     }
+
+    User save(User user) {
+        ++usersCount;
+        user.setId(usersCount);
+        users.add(user);
+        return user;
+    }
+
+    User findOne(int id) {
+        for(User user: users) {
+            if (user.getId() == id)
+                return user;
+        }
+        return null;
+    }
 }
